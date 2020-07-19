@@ -123,6 +123,7 @@
   },
   "defaultProject": "ang-ngrx",
   "cli": {
-    "defaultCollection": "@ngrx/schematics"
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "40f1525b-0398-4da0-b86c-eb5ef910a637"
   }
 }
