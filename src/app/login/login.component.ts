@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
-import { Login } from './login.action';
+import { Login, LoginFailed } from './login.action';
 import { LoginService } from '../login.service';
 import { noop } from 'rxjs';
 import { User } from './user';
@@ -14,19 +14,21 @@ import { User } from './user';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:Router,private store:Store<AppState>,private loginService : LoginService) { }
+  constructor(private router: Router, private store: Store<AppState>, private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
-  login(){
-     this.loginService.login()
-     .subscribe(
-      (user:User) =>{
-        this.store.dispatch(new Login({user}));
-        localStorage.setItem('user',"{id:1,name:'upendra'}")
-         this.router.navigate(['/home'])
-      },
-      () => {alert('login failed')}
-     )
+  login() {
+    this.loginService.login()
+      .subscribe(
+        (user: User) => {
+          this.store.dispatch(new Login({ user }));
+          localStorage.setItem('user', JSON.stringify(user));
+          this.router.navigate(['/home'])
+        },
+        () => {
+          this.store.dispatch(new LoginFailed({ 'reason': 'lOGIN FAILDED DUE TO SOME REASON' }));
+        }
+      )
   }
 }

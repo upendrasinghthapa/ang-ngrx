@@ -1,0 +1,17 @@
+.login-wrapper{
+    position: absolute;
+    width: 350px;
+    min-height: 400px;
+    margin: auto;
+    background-color: bisque;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0px 4px #585656;  
+}
+        .login-card{
+                position: relative;
+                padding: 50px 20px;    
+                  
+        }

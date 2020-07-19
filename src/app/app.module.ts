@@ -15,19 +15,20 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoginService } from './login.service';
 import { CourseComponent } from './course/course.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     CourseComponent,
-    ReactiveFormsModule
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers, {
       metaReducers, 
       runtimeChecks: {
@@ -35,7 +36,8 @@ import { ReactiveFormsModule } from "@angular/forms";
         strictActionImmutability: true,
       }
     }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    // EffectsModule.forRoot([])
   ],
   providers: [AuthService,LoginService],
   bootstrap: [AppComponent]

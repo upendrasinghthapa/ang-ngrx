@@ -39,6 +39,16 @@ function authReducer(state: AuthState = initialState, action): AuthState {
         loggedIn: true,
         user: action.payload.user
       }
+    case AuthActionType.LoginFailed:
+      return {
+        loggedIn: false,
+        user: null
+      }
+    case AuthActionType.LogoutAction:
+      return {
+        loggedIn: false,
+        user: null
+      }
     default:
       return state;
   }
@@ -47,7 +57,7 @@ function courseReducer(state: CourseState = courseInitialState, action): CourseS
   switch (action.type) {
     case CourseActionType.LoadCourse:
       return {
-       course : action.payload.course
+        course: action.payload.course
       }
     default:
       return state;
